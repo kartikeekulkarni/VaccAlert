@@ -1,5 +1,6 @@
 export default function HomePageComponent(){
     return (
+        
         <section id='header' className='d-flex align-items-center'>
             
                 <div className='row'>

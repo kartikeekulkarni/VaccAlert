@@ -1,0 +1,9 @@
+.mainDiv{
+    margin-top: 45px;
+  }
+  
+  .container-fluid ul.hello{
+    display: flex;
+    
+    align-items: center;
+  }

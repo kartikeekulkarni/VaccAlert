@@ -2,32 +2,97 @@ import { Link } from "react-router-dom"
 export default function AdminHome(){
 
     return (
-        <div>
-            <nav className="navbar navbar-expand-sm bg-light mb-3">
-                <div className="container-fluid">
-                <ul className="navbar-nav">
-                    <li className="nav-item">
-                    <Link to="approveHospital" className="nav-link px-3">Approve Hospital</Link>
-                    </li>
-                    <li className="nav-item">
-                    <Link to="viewParents" className="nav-link px-3">View Parents</Link>
-                    </li>
-                    <li className="nav-item">
-                    <Link to="viewHospitals" className="nav-link px-3">View Hospitals</Link>
-                    </li>
-                    <li className="nav-item">
-                    <Link to="addVaccine" className="nav-link px-3">Add Vaccine</Link>
-                    </li>
-                    <li className="nav-item">
-                    <Link to="removeVaccine" className="nav-link px-3">Remove Vaccine</Link>
-                    </li>
-                    <li className="nav-item">
-                    <Link to="/logout" className="nav-link px-3">Logout</Link>
-                    </li>
-                </ul>
-                </div>
-            </nav>
-            <h1>Admin Home</h1>
-        </div>
+        <div >
+        <div className='container mt-5'>
+          <div className='row'>
+              <div className='col-md-3'>
+                  <div className='card text-center'>
+              <div className='card-header  text-white'style={{backgroundColor:"#20c997"}}>
+                  <div className='row align-items-center'>
+                      <div className='col'>
+                         <h3>Approve Hospital</h3>
+                      </div>
+
+                  </div>
+              </div> 
+              <div className='card-footer'>
+                  <Link to={'../approvehospital'}>View Details</Link>
+              </div>
+              </div>
+              </div>               
+              
+              <div className='col-md-3' >
+                  <div className='card text-center '>
+              <div className='card-header text-white' style={{backgroundColor:"#2F4F4F"}}>
+                  <div className='row align-items-center'>
+                      <div className='col'>
+                         <h3>View Hospitals</h3>
+
+                      </div>
+                     
+                  </div>
+              </div>
+              <div className='card-footer'>
+                  <Link to={'../viewhospitals'} >View Details</Link>
+              </div>
+              </div>
+              </div>
+
+             
+              <div className='col-md-3'>
+                  <div className='card text-center '>
+              <div className='card-header bg-primary text-white'>
+                  <div className='row align-items-center'>
+                      <div className='col'>
+                         <h3>View Benificairies</h3>
+                      </div>
+                     
+                  </div>
+              </div>
+              <div className='card-footer'>
+                  <Link to={'../viewparents'}>View Details</Link>
+              </div>
+              </div>
+              </div>
+
+              <div className='col-md-3'>
+                  <div className='card text-center'>
+              <div className='card-header  text-white'style={{backgroundColor:"#20c997"}}>
+                  <div className='row align-items-center'>
+                      <div className='col'>
+                         <h3>View Vaccines</h3>
+
+                      </div>
+
+                  </div>
+              </div> 
+              <div className='card-footer'>
+                  <Link to={'../viewvaccine'}>View Details</Link>
+              </div>
+              </div>
+              </div>  
+
+              <div className='col-md-3'>
+                  <div className='card text-center'>
+              <div className='card-header  text-white'style={{backgroundColor:"#20c997"}}>
+                  <div className='row align-items-center'>
+                      <div className='col'>
+                         <h3>Add Vaccines</h3>
+
+                      </div>
+
+                  </div>
+              </div> 
+              <div className='card-footer'>
+                  <Link to={'../addvaccines'}>View Details</Link>
+              </div>
+              </div>
+              </div>  
+
+              
+             
+          </div>
+      </div>
+      </div>
     )
 }

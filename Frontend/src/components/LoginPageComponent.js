@@ -1,21 +1,25 @@
+
 import { useReducer, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { login } from "./slice";
 
-export default function LoginPageComponent(){
+export default function LoginPageComponent() {
 
     const init = {
         uid: { value: "", valid: false, err: "", touch: false },
         pwd: { value: "", valid: false, err: "", touch: false },
-        formValid: false
+        formValid: false,
+        errorMsg: "" // Added to hold error message for displaying above the form
     };
-     
+
     const reducer = (state, action) => {
-        switch(action.type) {
+        switch (action.type) {
             case 'update':
                 const { key, value, valid, err, touch, formValid } = action.data;
                 return { ...state, [key]: { value, valid, err, touch }, formValid };
+            case 'setError':
+                return { ...state, errorMsg: action.errorMsg };
             case 'reset':
                 return init;
             default:
@@ -24,10 +28,9 @@ export default function LoginPageComponent(){
     };
 
     const [usr, dispatch] = useReducer(reducer, init);
-    //const [msg, setMsg] = useState("");
     const [passFlag, setPassFlag] = useState(false);
     const navigate = useNavigate();
-    const reduxAction=useDispatch();
+    const reduxAction = useDispatch();
 
     const handleChange = (key, value) => {
         const { valid, err } = checkValid(key, value);
@@ -40,11 +43,11 @@ export default function LoginPageComponent(){
         }
         dispatch({ type: 'update', data: { key, value, valid, err, touch: true, formValid } });
     };
-    
+
     const checkValid = (key, value) => {
         let valid = true;
         let err = "";
-        switch(key) {
+        switch (key) {
             case 'uid':
                 const uidPattern = /^\w{2,}$/;
                 if (!uidPattern.test(value)) {
@@ -56,7 +59,7 @@ export default function LoginPageComponent(){
                 const pwdPattern = /^(?=.*[0-9])(?=.*[A-Z])(?=.*[!#@$%^&])[A-Za-z0-9!@#$%^&]{8,20}$/;
                 if (!pwdPattern.test(value)) {
                     valid = false;
-                    err = "Password must contain at least 1 special symbol, 1 capital letter, and be between 8-20 characters";
+                    err = "need at least one special Charector,capital letter,and range between 8-20 characters";
                 }
                 break;
             default:
@@ -67,14 +70,14 @@ export default function LoginPageComponent(){
 
     const sendData = (e) => {
         e.preventDefault();
-    
+
         // Check for admin login
         if (usr.uid.value === "admin" && usr.pwd.value === "Admin@123") {
-          reduxAction(login());
-            navigate("/adminhome");
+            reduxAction(login());
+            navigate("/admin/home");
             return;
         }
-    
+
         const reqOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -83,33 +86,31 @@ export default function LoginPageComponent(){
                 Password: usr.pwd.value
             })
         };
-    
+
         fetch("https://localhost:7131/api/UserLogin/LoginUser", reqOptions)
             .then(resp => {
-              if (!resp.ok) {
-                return resp.json().then(error => {
-                    throw new Error(JSON.stringify(error.message));
-                });}
+                if (!resp.ok) {
+                    return resp.json().then(error => {
+                        throw new Error(JSON.stringify(error.message));
+                    });
+                }
                 return resp.json();
             })
             .then(obj => {
-                        reduxAction(login());
-                        localStorage.setItem("loggedUser",JSON.stringify(obj));
-                        if (obj.userdb.rid === 1) {
-                            // Admin already handled abov
-                            navigate("/adminhome");
-                        } else if (obj.userdb.rid === 2) {        
-                                navigate("/hospitalhome");
-                            }
-                         else if (obj.userdb.rid === 3) {
-                            navigate("/parenthome");
-                        }
-                             
+                reduxAction(login());
+                localStorage.setItem("loggedUser", JSON.stringify(obj));
+                if (obj.userdb.rid === 1) {
+                    navigate("/admin/home");
+                } else if (obj.userdb.rid === 2) {
+                    navigate("/hospital/home");
+                } else if (obj.userdb.rid === 3) {
+                    navigate("/parent/home");
+                }
             })
-            .catch((error) => alert("Login Failed :"+error.message));
+            .catch((error) => {
+                dispatch({ type: 'setError', errorMsg: error.message });
+            });
     };
-        
-    
 
     return (
         <div className="col-md-12">
@@ -123,6 +124,13 @@ export default function LoginPageComponent(){
                         height={100}
                     />
                 </div>
+                <br/>
+                {usr.errorMsg && (
+                    <div className="alert alert-danger text-center" role="alert">
+                        {usr.errorMsg}
+                    </div>
+                )}
+
                 <form>
                     <div className="form-group">
                         <label htmlFor="uid"><b>Username</b></label>

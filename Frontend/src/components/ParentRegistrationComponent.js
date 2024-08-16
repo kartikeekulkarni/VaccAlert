@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import { Button, Alert, Container, Row, Col } from 'react-bootstrap';
+import { Button, Alert, Container, Row, Col, Form as BootstrapForm } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useNavigate } from 'react-router-dom';
 
@@ -10,36 +10,31 @@ const ParentRegistrationForm = () => {
     const [districts, setDistricts] = useState([]);
     const [cities, setCities] = useState([]);
     const [selectedState, setSelectedState] = useState('');
-    const navigate = useNavigate();
     const [selectedDistrict, setSelectedDistrict] = useState('');
+    const [showPassword, setShowPassword] = useState(false);
+    const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+    const navigate = useNavigate();
 
-    // Fetch states on component mount
     useEffect(() => {
         const fetchStates = async () => {
             try {
                 const response = await fetch("https://localhost:7131/api/UserLogin/GetAllState");
-                if (!response.ok) {
-                    throw new Error('Failed to fetch states');
-                }
+                if (!response.ok) throw new Error('Failed to fetch states');
                 const data = await response.json();
                 setStates(data);
             } catch (error) {
                 console.error('Error fetching states:', error);
             }
         };
-
         fetchStates();
     }, []);
 
-    // Fetch districts when a state is selected
     useEffect(() => {
         const fetchDistricts = async () => {
             if (selectedState) {
                 try {
                     const response = await fetch(`https://localhost:7131/api/UserLogin/GetAllDistrict/?sid=${selectedState}`);
-                    if (!response.ok) {
-                        throw new Error('Failed to fetch districts');
-                    }
+                    if (!response.ok) throw new Error('Failed to fetch districts');
                     const data = await response.json();
                     setDistricts(data);
                     setCities([]); // Clear cities when state changes
@@ -48,19 +43,15 @@ const ParentRegistrationForm = () => {
                 }
             }
         };
-
         fetchDistricts();
     }, [selectedState]);
 
-    // Fetch cities when a district is selected
     useEffect(() => {
         const fetchCities = async () => {
             if (selectedDistrict) {
                 try {
                     const response = await fetch(`https://localhost:7131/api/UserLogin/GetAllCities?did=${selectedDistrict}`);
-                    if (!response.ok) {
-                        throw new Error('Failed to fetch cities');
-                    }
+                    if (!response.ok) throw new Error('Failed to fetch cities');
                     const data = await response.json();
                     setCities(data);
                 } catch (error) {
@@ -68,61 +59,38 @@ const ParentRegistrationForm = () => {
                 }
             }
         };
-
         fetchCities();
     }, [selectedDistrict]);
 
     const validate = (values) => {
         const errors = {};
 
-        if (!values.fname) {
-            errors.fname = 'First name is required';
-        }
-        if (!values.lname) {
-            errors.lname = 'Last name is required';
-        }
-        if (!values.contact) {
-            errors.contact = 'Contact number is required';
-        } else if (!/^\d{10}$/.test(values.contact)) {
-            errors.contact = 'Contact number must be 10 digits only';
-        }
-        if (!values.email) {
-            errors.email = 'Email is required';
-        } else if (!/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(values.email)) {
-            errors.email = 'Invalid email address';
-        }
-        if (!values.paddress?.state) {
-            errors.paddress = { ...errors.paddress, state: 'State is required' };
-        }
-        if (!values.paddress?.district) {
-            errors.paddress = { ...errors.paddress, district: 'District is required' };
-        }
-        if (!values.paddress?.city) {
-            errors.paddress = { ...errors.paddress, city: 'City is required' };
-        }
-        if (!values.paddress?.pincode) {
-            errors.paddress = { ...errors.paddress, pincode: 'Pincode is required' };
-        }
-        if (!values.paddress?.area) {
-            errors.paddress = { ...errors.paddress, area: 'Pincode is required' };
-        }
-        if (!values.uname) {
-            errors.uname = 'Username is required';
-        }else if (values.uname.length < 2) errors.uname = "Username must be at least 2 characters long";
-        if (!values.password) {
-            errors.password = 'Password is required';
-        }else if (!/^(?=.*[0-9])(?=.*[A-Z])(?=.*[!#@$%^&])[A-Za-z0-9!@#$%^&]{8,20}$/.test(values.password)) {
-            errors.password = "Password must be 6-20 characters long and contain at least one capital letter, one small letter, and one special symbol";
-        }
+        if (!values.fname) errors.fname = 'First name is required';
+        else if (!/^[^\s]+$/.test(values.fname)) errors.fname = 'space not allow';
+        if (!values.lname) errors.lname = 'Last name is required';
+        else if (!/^[^\s]+$/.test(values.lname)) errors.lname = 'space not allow';
+        if (!values.contact) errors.contact = 'Contact number is required';
+        else if (!/^\d{10}$/.test(values.contact)) errors.contact = 'Contact number must be 10 digits only';
+        if (!values.email) errors.email = 'Email is required';
+        else if (!/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(values.email)) errors.email = 'Invalid email address';
+        if (!values.paddress?.state) errors.paddress = { ...errors.paddress, state: 'State is required' };
+        if (!values.paddress?.district) errors.paddress = { ...errors.paddress, district: 'District is required' };
+        if (!values.paddress?.city) errors.paddress = { ...errors.paddress, city: 'City is required' };
+        if (!values.paddress?.pincode) errors.paddress = { ...errors.paddress, pincode: 'Pincode is required' };
+        if (!values.paddress?.area) errors.paddress = { ...errors.paddress, area: 'Area is required' };
+        if (!values.uname) errors.uname = 'Username is required';
+        else if (!/^[^\s]+$/.test(values.uname)) errors.uname = 'space not allow';
+        else if (values.uname.length < 2) errors.uname = 'Username must be at least 2 characters long';
+        if (!values.password) errors.password = 'Password is required';
+        else if (!/^(?=.*[0-9])(?=.*[A-Z])(?=.*[!#@$%^&])[A-Za-z0-9!@#$%^&]{8,20}$/.test(values.password)) errors.password = 'Password must be 8-20 characters long and contain at least one capital letter, one small letter, and one special symbol';
+        if (values.password !== values.confirmPassword) errors.confirmPassword = 'Passwords must match';
 
         return errors;
     };
 
     const handleSubmit = async (values, { setSubmitting, resetForm }) => {
-        console.log("Submitting", values);
         try {
             const response = await registerParent(values);
-            console.log('Server response:', response);
             handleSuccess(resetForm);
         } catch (error) {
             handleError(error);
@@ -132,11 +100,9 @@ const ParentRegistrationForm = () => {
     };
 
     const registerParent = async (values) => {
-         const response = await fetch("https://localhost:7131/api/Registration/RegisterParent", {
+        const response = await fetch("https://localhost:7131/api/Registration/RegisterParent", {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
                 fname: values.fname,
                 lname: values.lname,
@@ -148,7 +114,7 @@ const ParentRegistrationForm = () => {
                     city: values.paddress.city,
                     pincode: values.paddress.pincode,
                     area: values.paddress.area
-                }   ,
+                },
                 uidNavigation: {
                     uname: values.uname,
                     password: values.password,
@@ -165,9 +131,9 @@ const ParentRegistrationForm = () => {
 
     const handleSuccess = (resetForm) => {
         setStatus({ success: true, message: 'Registration successful!' });
-        alert("Registration successful!");
+        alert('Registration successful!');
         resetForm();
-        navigate("/login");
+        navigate('/login');
     };
 
     const handleError = (error) => {
@@ -178,8 +144,8 @@ const ParentRegistrationForm = () => {
     return (
         <Container>
             <Row className="justify-content-md-center">
-                <Col md={6}>
-                    <div className="card card-container">
+                <Col md={8}>
+                    <div className="reg reg-container p-4">
                         <Formik
                             initialValues={{
                                 fname: '',
@@ -191,39 +157,72 @@ const ParentRegistrationForm = () => {
                                     district: '',
                                     city: '',
                                     pincode: '',
-                                    area:''
+                                    area: ''
                                 },
                                 uname: '',
-                                password: ''
+                                password: '',
+                                confirmPassword: ''
                             }}
                             validate={validate}
                             onSubmit={handleSubmit}
                         >
-                            {({ setFieldValue, isSubmitting }) => (
+                            {({ setFieldValue, isSubmitting, resetForm }) => (
                                 <Form>
+                                    <h1 className='text-center'>Register Parent</h1><br/>
+                                    {status && (
+                            <Alert variant={status.success ? 'success' : 'danger'} className="mt-3">
+                                {status.message}
+                            </Alert>
+                        )}
+                                    <Row className="mb-3">
+                                        <Col md={6}>
+                                            <div className="form-group">
+                                                <Field
+                                                    type="text"
+                                                    name="fname"
+                                                    className="form-control"
+                                                    placeholder="First Name"
+                                                />
+                                                <ErrorMessage name="fname" component="div" className="text-danger" />
+                                            </div>
+                                        </Col>
+                                        <Col md={6}>
+                                            <div className="form-group">
+                                                <Field
+                                                    type="text"
+                                                    name="lname"
+                                                    className="form-control"
+                                                    placeholder="Last Name"
+                                                />
+                                                <ErrorMessage name="lname" component="div" className="text-danger" />
+                                            </div>
+                                        </Col>
+                                    </Row>
+                                    <Row className="mb-3">
+                                        <Col md={6}>
+                                            <div className="form-group">
+                                                <Field
+                                                    type="text"
+                                                    name="contact"
+                                                    className="form-control"
+                                                    placeholder="Contact"
+                                                />
+                                                <ErrorMessage name="contact" component="div" className="text-danger" />
+                                            </div>
+                                        </Col>
+                                        <Col md={6}>
+                                            <div className="form-group">
+                                                <Field
+                                                    type="email"
+                                                    name="email"
+                                                    className="form-control"
+                                                    placeholder="Email"
+                                                />
+                                                <ErrorMessage name="email" component="div" className="text-danger" />
+                                            </div>
+                                        </Col>
+                                    </Row>
                                     <div className="form-group">
-                                        <h2>Register Parent</h2>
-                                        <label htmlFor="fname">First Name</label>
-                                        <Field type="text" name="fname" className="form-control" />
-                                        <ErrorMessage name="fname" component="div" className="text-danger" />
-                                    </div>
-                                    <div className="form-group">
-                                        <label htmlFor="lname">Last Name</label>
-                                        <Field type="text" name="lname" className="form-control" />
-                                        <ErrorMessage name="lname" component="div" className="text-danger" />
-                                    </div>
-                                    <div className="form-group">
-                                        <label htmlFor="contact">Contact</label>
-                                        <Field type="text" name="contact" className="form-control" />
-                                        <ErrorMessage name="contact" component="div" className="text-danger" />
-                                    </div>
-                                    <div className="form-group">
-                                        <label htmlFor="email">Email</label>
-                                        <Field type="email" name="email" className="form-control" />
-                                        <ErrorMessage name="email" component="div" className="text-danger" />
-                                    </div>
-                                    <div className="form-group">
-                                        <label htmlFor="paddress.state">State</label>
                                         <Field
                                             as="select"
                                             name="paddress.state"
@@ -245,9 +244,8 @@ const ParentRegistrationForm = () => {
                                             ))}
                                         </Field>
                                         <ErrorMessage name="paddress.state" component="div" className="text-danger" />
-                                    </div>
+                                    </div><br/>
                                     <div className="form-group">
-                                        <label htmlFor="paddress.district">District</label>
                                         <Field
                                             as="select"
                                             name="paddress.district"
@@ -256,6 +254,7 @@ const ParentRegistrationForm = () => {
                                                 const district = e.target.value;
                                                 setFieldValue('paddress.district', district);
                                                 setSelectedDistrict(district);
+                                                setFieldValue('paddress.city', ''); // Clear city when district changes
                                             }}
                                         >
                                             <option value="">Select District</option>
@@ -266,9 +265,8 @@ const ParentRegistrationForm = () => {
                                             ))}
                                         </Field>
                                         <ErrorMessage name="paddress.district" component="div" className="text-danger" />
-                                    </div>
+                                    </div><br/>
                                     <div className="form-group">
-                                        <label htmlFor="paddress.city">City</label>
                                         <Field
                                             as="select"
                                             name="paddress.city"
@@ -282,38 +280,88 @@ const ParentRegistrationForm = () => {
                                             ))}
                                         </Field>
                                         <ErrorMessage name="paddress.city" component="div" className="text-danger" />
-                                    </div>
+                                    </div><br/>
+                                    <Row className="mb-3">
+                                        <Col md={6}>
+                                            <div className="form-group">
+                                                <Field
+                                                    type="text"
+                                                    name="paddress.pincode"
+                                                    className="form-control"
+                                                    placeholder="Pincode"
+                                                />
+                                                <ErrorMessage name="paddress.pincode" component="div" className="text-danger" />
+                                            </div>
+                                        </Col>
+                                        <Col md={6}>
+                                            <div className="form-group">
+                                                <Field
+                                                    type="text"
+                                                    name="paddress.area"
+                                                    className="form-control"
+                                                    placeholder="Area"
+                                                />
+                                                <ErrorMessage name="paddress.area" component="div" className="text-danger" />
+                                            </div>
+                                        </Col>
+                                    </Row>
+                                    <Row className="mb-3">
+                                        <Col md={6}>
                                     <div className="form-group">
-                                        <label htmlFor="paddress.area">Area</label>
-                                        <Field type="text" name="paddress.area" className="form-control"/>
-                                        <ErrorMessage name="paddress.area" component="div" className="text-danger" />
-                                    </div>
-                                    <div className="form-group">
-                                        <label htmlFor="paddress.pincode">Pincode</label>
-                                        <Field type="text" name="paddress.pincode" className="form-control"/>
-                                        <ErrorMessage name="paddress.pincode" component="div" className="text-danger" />
-                                    </div>
-                                    <div className="form-group">
-                                        <label htmlFor="uname">Username</label>
-                                        <Field type="text" name="uname" className="form-control" />
+                                        <Field
+                                            type="text"
+                                            name="uname"
+                                            className="form-control"
+                                            placeholder="Username"
+                                        />
                                         <ErrorMessage name="uname" component="div" className="text-danger" />
-                                    </div>
+                                    </div></Col>
+                                        <Col md={6}>
                                     <div className="form-group">
-                                        <label htmlFor="password">Password</label>
-                                        <Field type="password" name="password" className="form-control" />
+                                        <Field
+                                            type={showPassword ? 'text' : 'password'}
+                                            name="password"
+                                            className="form-control"
+                                            placeholder="Password"
+                                        />
                                         <ErrorMessage name="password" component="div" className="text-danger" />
-                                    </div>
-                                    {status && (
-                                        <Alert variant={status.success ? 'success' : 'danger'}>
-                                            {status.message}
-                                        </Alert>
-                                    )}
-                                    <Button type="submit" variant="primary" disabled={isSubmitting}>
-                                        {isSubmitting ? 'Submitting...' : 'Submit'}
+                                    </div></Col>
+                                    </Row>
+                                    <div className="form-group">
+                                        <Field
+                                            type={showConfirmPassword ? 'text' : 'password'}
+                                            name="confirmPassword"
+                                            className="form-control"
+                                            placeholder="Confirm Password"
+                                        />
+                                        <Button
+                                            type="button"
+                                            onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                                            className="btn btn-secondary mt-1"
+                                        >
+                                            {showConfirmPassword ? 'Hide Password' : 'Show Password'}
+                                        </Button>
+                                        <ErrorMessage name="confirmPassword" component="div" className="text-danger" />
+                                    </div><br/>
+                                    <Button
+                                        type="submit"
+                                        variant="primary"
+                                        disabled={isSubmitting}
+                                    >
+                                        Register
+                                    </Button>
+                                    <Button
+                                        type="button"
+                                        onClick={() => resetForm()}
+                                        variant="secondary"
+                                        className="ms-2"
+                                    >
+                                        Clear
                                     </Button>
                                 </Form>
                             )}
                         </Formik>
+                        
                     </div>
                 </Col>
             </Row>
