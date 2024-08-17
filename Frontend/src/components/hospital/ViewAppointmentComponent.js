@@ -11,10 +11,12 @@ export default function ViewAppointmentComponent (){
           fetch(`http://localhost:8080/getappointments/${user.userdb.hospitals[0].hid}`)
         .then((resp)=>{
             return resp.json()})
-        .then((data)=>{setAppointments(data); alert(JSON.stringify(data))})
+        .then((data)=>{setAppointments(data); 
+            //alert(JSON.stringify(data))
+        })
         .catch(err=>console.log(err.toString()))
         
-    },[])
+    },[]   )
 
 
     const updateBookingStatus = (bkid, newStatus) => {
@@ -45,7 +47,7 @@ export default function ViewAppointmentComponent (){
             </h2>
             <br/>
             {appoints.length === 0 ? (
-                    <p>No Appointments found.</p>
+                    <h2>No Appointments found.</h2>
                 ) : (
             <table className='table border shadow'>
                 <thead className='thead-dark'>
@@ -95,7 +97,7 @@ export default function ViewAppointmentComponent (){
                 </tbody>
 
             </table>)}
-            <Link to={"/hospitalhome"} class="btn btn-info mx-3 " >Go To Home</Link>
+            <Link to={"../home"} class="btn btn-info mx-3 " >Go To Home</Link>
         </div>
     )
 
