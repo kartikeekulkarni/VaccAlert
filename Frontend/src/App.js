@@ -27,6 +27,11 @@ import ViewParents from './components/admin/ViewParents';
 import ViewVaccines from './components/admin/ViewVaccines';
 import AddVaccineForm from './components/admin/AddVaccine';
 import Parent from './components/parent/Parent';
+import AddChild from './components/parent/AddChild';
+import ViewChild from './components/parent/ViewChildInfo';
+import AboutVaccineComponent from './components/parent/AboutVaccination';
+import BookVaccine from './components/parent/BookVaccine';
+import ViewSchedule from './components/parent/ViewSchedule';
 
 function App() {
 
@@ -63,11 +68,12 @@ const mystate = useSelector((state)=>state.logged);
 
           <Route path='/parent'element={<Parent/>}>
             <Route path='home'element={<ParentHome/>}/>
-            <Route path='approvehospital'element={<ApproveHospital/>}/>
-            <Route path='viewhospitals'element={<ViewHospitals/>}/>
-            <Route path='viewparents'element={<ViewParents/>}/>
-            <Route path='viewvaccine'element={<ViewVaccines/>}/>
-            <Route path='addvaccines'element={<AddVaccineForm/>}/>
+            <Route path='addchild'element={<AddChild/>}/>
+            <Route path='childinfo'element={<ViewChild/>}/>
+            <Route path='about-vaccination'element={<AboutVaccineComponent/>}/>
+            <Route path='viewvaccine'element={<ViewVaccine/>}/>
+            <Route path='bookvaccine'element={<BookVaccine/>}/>
+            <Route path='viewschedule'element={<ViewSchedule/>}/>
             <Route path='about-us'element={<AboutUsPage/>}/>
             <Route path='contact-us'element={<ContactPageComponent/>}/>
 

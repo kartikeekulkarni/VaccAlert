@@ -9,7 +9,7 @@ export default function ViewVaccine() {
             .then((resp) => resp.json())
             .then((data) => {
                 setVaccines(data);
-                alert(JSON.stringify(data));
+                //alert(JSON.stringify(data));
             })
             .catch(err => console.log(err.toString()));
     }, []);
@@ -19,7 +19,7 @@ export default function ViewVaccine() {
             <div className="card shadow">
                 <div className="card-header d-flex justify-content-between align-items-center">
                     <h2 className="text-center">List Of Vaccines</h2>
-                    <Link to="/hospital/home" className="btn btn-info">Go To Home</Link>
+                    <Link to="../home" className="btn btn-info">Go To Home</Link>
                 </div>
                 <div className="card-body">
                     <table className="table table-hover table-striped">

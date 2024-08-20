@@ -1,8 +1,46 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { Link } from 'react-router-dom';
 
 const AddVaccineForm = () => {
+    const [formMessage, setFormMessage] = useState(null);
+
+    const validate = values => {
+        const errors = {};
+
+        if (!values.vaccineName) {
+            errors.vaccineName = 'Vaccine Name is required';
+        }
+
+        if (!values.description) {
+            errors.description = 'Description is required';
+        }
+
+        if (!values.dose) {
+            errors.dose = 'Dose is required';
+        }
+
+        if (!values.route) {
+            errors.route = 'Route is required';
+        }
+
+        if (!values.site) {
+            errors.site = 'Site is required';
+        }
+
+        if (!values.whenToGive) {
+            errors.whenToGive = 'When to Give is required';
+        }
+
+        if (!values.weeks) {
+            errors.weeks = 'Weeks is required';
+        } else if (values.weeks <= 0) {
+            errors.weeks = 'Weeks must be a positive number';
+        }
+
+        return errors;
+    };
+
     const handleSubmit = (values, { setSubmitting }) => {
         fetch('http://localhost:8080/savevaccine', {
             method: 'POST',
@@ -11,24 +49,20 @@ const AddVaccineForm = () => {
             },
             body: JSON.stringify(values),
         })
-            .then(response =>response.json())
+            .then(response => response.json())
             .then(data => {
-                console.log('Vaccine added:', data);
-                // Handle success (e.g., show a success message)
+                setFormMessage({ type: 'success', text: 'Vaccine added successfully!' });
                 setSubmitting(false);
-                alert("Vaccine added successfully!");
-                window.location.reload();
             })
             .catch(error => {
-                console.error('There was an error adding the vaccine!', error);
-                // Handle error (e.g., show an error message)
+                setFormMessage({ type: 'error', text: 'There was an error adding the vaccine!' });
                 setSubmitting(false);
             });
     };
 
     return (
-        <div className="container my-5">
-            <div className="card p-4 shadow-sm card-spacing" style={{ borderRadius: '15px', border: 'none' }}>
+        <div className="container my-4">
+            <div className="card p-4 shadow-sm" style={{ borderRadius: '15px', border: 'none' }}>
                 <Formik
                     initialValues={{
                         vaccineName: '',
@@ -37,8 +71,9 @@ const AddVaccineForm = () => {
                         route: '',
                         site: '',
                         whenToGive: '',
-                        weeks: '' // Added weeks field here
+                        weeks: '',
                     }}
+                    validate={validate}
                     onSubmit={handleSubmit}
                 >
                     {({ isSubmitting }) => (
@@ -46,78 +81,85 @@ const AddVaccineForm = () => {
                             <div className="text-center mb-4">
                                 <h2>Add Vaccine</h2>
                             </div>
-                            <div className="mb-3">
-                <Link to="../home" className="btn btn-primary">Back to Home</Link>
-            </div>
-                            <div className="form-group">
+                            <div className="mb-3 text-center">
+                                <Link to="../home" className="btn btn-outline-primary">Back to Home</Link>
+                            </div>
+                            {formMessage && (
+                                <div className={`alert ${formMessage.type === 'success' ? 'alert-success' : 'alert-danger'}`} role="alert">
+                                    {formMessage.text}
+                                </div>
+                            )}
+                            <div className="form-group mb-3">
                                 <label htmlFor="vaccineName">Vaccine Name</label>
                                 <Field
                                     type="text"
                                     name="vaccineName"
                                     className="form-control"
                                 />
-                                <ErrorMessage name="vaccineName" component="div" className="text-danger" />
+                                <ErrorMessage name="vaccineName" component="div" className="text-danger mt-1" />
                             </div>
-                            <div className="form-group">
+                            <div className="form-group mb-3">
                                 <label htmlFor="description">Description</label>
                                 <Field
                                     as="textarea"
                                     name="description"
                                     className="form-control"
                                 />
-                                <ErrorMessage name="description" component="div" className="text-danger" />
+                                <ErrorMessage name="description" component="div" className="text-danger mt-1" />
                             </div>
-                            <div className="form-group">
+                            <div className="form-group mb-3">
                                 <label htmlFor="dose">Dose</label>
                                 <Field
                                     type="text"
                                     name="dose"
                                     className="form-control"
                                 />
-                                <ErrorMessage name="dose" component="div" className="text-danger" />
+                                <ErrorMessage name="dose" component="div" className="text-danger mt-1" />
                             </div>
-                            <div className="form-group">
+                            <div className="form-group mb-3">
                                 <label htmlFor="route">Route</label>
                                 <Field
                                     type="text"
                                     name="route"
                                     className="form-control"
                                 />
-                                <ErrorMessage name="route" component="div" className="text-danger" />
+                                <ErrorMessage name="route" component="div" className="text-danger mt-1" />
                             </div>
-                            <div className="form-group">
+                            <div className="form-group mb-3">
                                 <label htmlFor="site">Site</label>
                                 <Field
                                     type="text"
                                     name="site"
                                     className="form-control"
                                 />
-                                <ErrorMessage name="site" component="div" className="text-danger" />
+                                <ErrorMessage name="site" component="div" className="text-danger mt-1" />
                             </div>
-                            <div className="form-group">
+                            <div className="form-group mb-3">
                                 <label htmlFor="whenToGive">When to Give</label>
                                 <Field
                                     type="text"
                                     name="whenToGive"
                                     className="form-control"
                                 />
-                                <ErrorMessage name="whenToGive" component="div" className="text-danger" />
+                                <ErrorMessage name="whenToGive" component="div" className="text-danger mt-1" />
                             </div>
-                            <div className="form-group">
+                            <div className="form-group mb-4">
                                 <label htmlFor="weeks">Weeks</label>
                                 <Field
                                     type="number"
                                     name="weeks"
                                     className="form-control"
                                 />
-                                <ErrorMessage name="weeks" component="div" className="text-danger" />
-                            </div><br/>
-                            <button type="submit" className="btn btn-primary" disabled={isSubmitting}>
-                                Add Vaccine
-                            </button><span>   </span>
-                            <button type="reset" className="btn btn-primary">
-                                Reset
-                            </button>
+                                <ErrorMessage name="weeks" component="div" className="text-danger mt-1" />
+                            </div>
+                            <div className="d-flex justify-content-between">
+                                <button type="submit" className="btn btn-primary" disabled={isSubmitting}>
+                                    Add Vaccine
+                                </button>
+                                <button type="reset" className="btn btn-secondary">
+                                    Reset
+                                </button>
+                            </div>
                         </Form>
                     )}
                 </Formik>

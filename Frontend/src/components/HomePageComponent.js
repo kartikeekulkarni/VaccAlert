@@ -17,7 +17,7 @@ export default function HomePageComponent(){
                             Rotavirus Vaccine,Pneumococcal,Polio,Influenza,Varicella Vaccines for infants and children.</p></h6>
                     </h5>
                     <div className='mt-3'>
-                        <a href='' className='btn btn-warning'>Get Started</a>
+                        <a href='login' className='btn btn-warning'>Get Started</a>
                     </div>
                     
                 </div>

@@ -44,7 +44,7 @@ export default function AdminHome(){
               <div className='card-header bg-primary text-white'>
                   <div className='row align-items-center'>
                       <div className='col'>
-                         <h3>View Benificairies</h3>
+                         <h3>View Parents</h3>
                       </div>
                      
                   </div>

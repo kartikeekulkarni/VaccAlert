@@ -2,9 +2,12 @@ import { useEffect } from "react"
 import { Link } from "react-router-dom"
 export default function ParentHome(){
     
-    // useEffect(()=>{
-    //     uid=JSON.parse(localStorage.getItem("loggedUser")).uid
-    // },[])
+     useEffect(()=>{
+        const uid=JSON.parse(localStorage.getItem("loggedUser"))
+                 fetch(`http://localhost:8080/getparentbyuid/${uid.userdb.uid}`)
+         .then(resp=>resp.json())
+         .then(obj=>{localStorage.setItem("loggedparent",JSON.stringify(obj))})
+     },[])
 
     return (
         <div >

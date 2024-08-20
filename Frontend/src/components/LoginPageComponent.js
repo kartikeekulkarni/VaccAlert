@@ -108,7 +108,10 @@ export default function LoginPageComponent() {
                 }
             })
             .catch((error) => {
-                dispatch({ type: 'setError', errorMsg: error.message });
+                let errMsg = error.message.includes('Failed to fetch') ? 
+                           "Server is down, please try again later" : 
+                           error.message;
+                dispatch({ type: 'setError', errorMsg: errMsg });
             });
     };
 
