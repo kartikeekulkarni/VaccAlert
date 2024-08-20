@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "0NReutNklNOvdejyiYYjVvKZke6JsVvnYM70AgdFPkI=",
+  "Source": "vaccalertDotnet",
+  "BasePath": "_content/vaccalertDotnet",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
