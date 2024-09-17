@@ -1,0 +1,215 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Know-it\\Project\\DotNetWebAPI\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{30095B25-8CC2-4BEC-B263-0A509352C018}|vaccalertDotnet\\vaccalertDotnet.csproj|d:\\know-it\\project\\dotnetwebapi\\vaccalertdotnet\\controllers\\userlogincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{30095B25-8CC2-4BEC-B263-0A509352C018}|vaccalertDotnet\\vaccalertDotnet.csproj|solutionrelative:vaccalertdotnet\\controllers\\userlogincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{30095B25-8CC2-4BEC-B263-0A509352C018}|vaccalertDotnet\\vaccalertDotnet.csproj|d:\\know-it\\project\\dotnetwebapi\\vaccalertdotnet\\controllers\\registrationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{30095B25-8CC2-4BEC-B263-0A509352C018}|vaccalertDotnet\\vaccalertDotnet.csproj|solutionrelative:vaccalertdotnet\\controllers\\registrationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{30095B25-8CC2-4BEC-B263-0A509352C018}|vaccalertDotnet\\vaccalertDotnet.csproj|d:\\know-it\\project\\dotnetwebapi\\vaccalertdotnet\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{30095B25-8CC2-4BEC-B263-0A509352C018}|vaccalertDotnet\\vaccalertDotnet.csproj|solutionrelative:vaccalertdotnet\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{30095B25-8CC2-4BEC-B263-0A509352C018}|vaccalertDotnet\\vaccalertDotnet.csproj|d:\\know-it\\project\\dotnetwebapi\\vaccalertdotnet\\models\\hospital.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{30095B25-8CC2-4BEC-B263-0A509352C018}|vaccalertDotnet\\vaccalertDotnet.csproj|solutionrelative:vaccalertdotnet\\models\\hospital.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{30095B25-8CC2-4BEC-B263-0A509352C018}|vaccalertDotnet\\vaccalertDotnet.csproj|d:\\know-it\\project\\dotnetwebapi\\vaccalertdotnet\\models\\child.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{30095B25-8CC2-4BEC-B263-0A509352C018}|vaccalertDotnet\\vaccalertDotnet.csproj|solutionrelative:vaccalertdotnet\\models\\child.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{30095B25-8CC2-4BEC-B263-0A509352C018}|vaccalertDotnet\\vaccalertDotnet.csproj|d:\\know-it\\project\\dotnetwebapi\\vaccalertdotnet\\models\\parent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{30095B25-8CC2-4BEC-B263-0A509352C018}|vaccalertDotnet\\vaccalertDotnet.csproj|solutionrelative:vaccalertdotnet\\models\\parent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{30095B25-8CC2-4BEC-B263-0A509352C018}|vaccalertDotnet\\vaccalertDotnet.csproj|d:\\know-it\\project\\dotnetwebapi\\vaccalertdotnet\\models\\efmigrationshistory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{30095B25-8CC2-4BEC-B263-0A509352C018}|vaccalertDotnet\\vaccalertDotnet.csproj|solutionrelative:vaccalertdotnet\\models\\efmigrationshistory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{30095B25-8CC2-4BEC-B263-0A509352C018}|vaccalertDotnet\\vaccalertDotnet.csproj|d:\\know-it\\project\\dotnetwebapi\\vaccalertdotnet\\models\\address.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{30095B25-8CC2-4BEC-B263-0A509352C018}|vaccalertDotnet\\vaccalertDotnet.csproj|solutionrelative:vaccalertdotnet\\models\\address.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{30095B25-8CC2-4BEC-B263-0A509352C018}|vaccalertDotnet\\vaccalertDotnet.csproj|d:\\know-it\\project\\dotnetwebapi\\vaccalertdotnet\\models\\district.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{30095B25-8CC2-4BEC-B263-0A509352C018}|vaccalertDotnet\\vaccalertDotnet.csproj|solutionrelative:vaccalertdotnet\\models\\district.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{30095B25-8CC2-4BEC-B263-0A509352C018}|vaccalertDotnet\\vaccalertDotnet.csproj|d:\\know-it\\project\\dotnetwebapi\\vaccalertdotnet\\models\\city.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{30095B25-8CC2-4BEC-B263-0A509352C018}|vaccalertDotnet\\vaccalertDotnet.csproj|solutionrelative:vaccalertdotnet\\models\\city.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{30095B25-8CC2-4BEC-B263-0A509352C018}|vaccalertDotnet\\vaccalertDotnet.csproj|d:\\know-it\\project\\dotnetwebapi\\vaccalertdotnet\\models\\booking.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{30095B25-8CC2-4BEC-B263-0A509352C018}|vaccalertDotnet\\vaccalertDotnet.csproj|solutionrelative:vaccalertdotnet\\models\\booking.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{30095B25-8CC2-4BEC-B263-0A509352C018}|vaccalertDotnet\\vaccalertDotnet.csproj|d:\\know-it\\project\\dotnetwebapi\\vaccalertdotnet\\vaccalertdotnet.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{30095B25-8CC2-4BEC-B263-0A509352C018}|vaccalertDotnet\\vaccalertDotnet.csproj|solutionrelative:vaccalertdotnet\\vaccalertdotnet.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 6,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Hospital.cs",
+              "DocumentMoniker": "D:\\Know-it\\Project\\DotNetWebAPI\\vaccalertDotnet\\Models\\Hospital.cs",
+              "RelativeDocumentMoniker": "vaccalertDotnet\\Models\\Hospital.cs",
+              "ToolTip": "D:\\Know-it\\Project\\DotNetWebAPI\\vaccalertDotnet\\Models\\Hospital.cs",
+              "RelativeToolTip": "vaccalertDotnet\\Models\\Hospital.cs",
+              "ViewState": "AQIAABIAAAAAAAAAAAA7wBoAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-08T14:12:53.513Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "District.cs",
+              "DocumentMoniker": "D:\\Know-it\\Project\\DotNetWebAPI\\vaccalertDotnet\\Models\\District.cs",
+              "RelativeDocumentMoniker": "vaccalertDotnet\\Models\\District.cs",
+              "ToolTip": "D:\\Know-it\\Project\\DotNetWebAPI\\vaccalertDotnet\\Models\\District.cs",
+              "RelativeToolTip": "vaccalertDotnet\\Models\\District.cs",
+              "ViewState": "AQIAAAoAAAAAAAAAAAAQwA0AAAAlAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-08T14:11:49.835Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "City.cs",
+              "DocumentMoniker": "D:\\Know-it\\Project\\DotNetWebAPI\\vaccalertDotnet\\Models\\City.cs",
+              "RelativeDocumentMoniker": "vaccalertDotnet\\Models\\City.cs",
+              "ToolTip": "D:\\Know-it\\Project\\DotNetWebAPI\\vaccalertDotnet\\Models\\City.cs",
+              "RelativeToolTip": "vaccalertDotnet\\Models\\City.cs",
+              "ViewState": "AQIAAAoAAAAAAAAAAAAQwBEAAABEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-08T14:11:37.891Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Child.cs",
+              "DocumentMoniker": "D:\\Know-it\\Project\\DotNetWebAPI\\vaccalertDotnet\\Models\\Child.cs",
+              "RelativeDocumentMoniker": "vaccalertDotnet\\Models\\Child.cs",
+              "ToolTip": "D:\\Know-it\\Project\\DotNetWebAPI\\vaccalertDotnet\\Models\\Child.cs",
+              "RelativeToolTip": "vaccalertDotnet\\Models\\Child.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAArAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-08T14:11:19.818Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Address.cs",
+              "DocumentMoniker": "D:\\Know-it\\Project\\DotNetWebAPI\\vaccalertDotnet\\Models\\Address.cs",
+              "RelativeDocumentMoniker": "vaccalertDotnet\\Models\\Address.cs",
+              "ToolTip": "D:\\Know-it\\Project\\DotNetWebAPI\\vaccalertDotnet\\Models\\Address.cs",
+              "RelativeToolTip": "vaccalertDotnet\\Models\\Address.cs",
+              "ViewState": "AQIAAAoAAAAAAAAAAAAQwBcAAABFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-08T14:10:51.481Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "RegistrationController.cs",
+              "DocumentMoniker": "D:\\Know-it\\Project\\DotNetWebAPI\\vaccalertDotnet\\Controllers\\RegistrationController.cs",
+              "RelativeDocumentMoniker": "vaccalertDotnet\\Controllers\\RegistrationController.cs",
+              "ToolTip": "D:\\Know-it\\Project\\DotNetWebAPI\\vaccalertDotnet\\Controllers\\RegistrationController.cs",
+              "RelativeToolTip": "vaccalertDotnet\\Controllers\\RegistrationController.cs",
+              "ViewState": "AQIAAGEAAAAAAAAAAAAAAH4AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-04T10:38:09.721Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "UserLoginController.cs",
+              "DocumentMoniker": "D:\\Know-it\\Project\\DotNetWebAPI\\vaccalertDotnet\\Controllers\\UserLoginController.cs",
+              "RelativeDocumentMoniker": "vaccalertDotnet\\Controllers\\UserLoginController.cs",
+              "ToolTip": "D:\\Know-it\\Project\\DotNetWebAPI\\vaccalertDotnet\\Controllers\\UserLoginController.cs",
+              "RelativeToolTip": "vaccalertDotnet\\Controllers\\UserLoginController.cs",
+              "ViewState": "AQIAACwAAAAAAAAAAAAgwDoAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-04T05:34:29.121Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Parent.cs",
+              "DocumentMoniker": "D:\\Know-it\\Project\\DotNetWebAPI\\vaccalertDotnet\\Models\\Parent.cs",
+              "RelativeDocumentMoniker": "vaccalertDotnet\\Models\\Parent.cs",
+              "ToolTip": "D:\\Know-it\\Project\\DotNetWebAPI\\vaccalertDotnet\\Models\\Parent.cs",
+              "RelativeToolTip": "vaccalertDotnet\\Models\\Parent.cs",
+              "ViewState": "AQIAABAAAAAAAAAAAAA5wBMAAAAqAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-08T14:13:09.639Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Know-it\\Project\\DotNetWebAPI\\vaccalertDotnet\\Program.cs",
+              "RelativeDocumentMoniker": "vaccalertDotnet\\Program.cs",
+              "ToolTip": "D:\\Know-it\\Project\\DotNetWebAPI\\vaccalertDotnet\\Program.cs",
+              "RelativeToolTip": "vaccalertDotnet\\Program.cs",
+              "ViewState": "AQIAAAcAAAAAAAAAAAAxwC4AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-04T05:37:11.43Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Efmigrationshistory.cs",
+              "DocumentMoniker": "D:\\Know-it\\Project\\DotNetWebAPI\\vaccalertDotnet\\Models\\Efmigrationshistory.cs",
+              "RelativeDocumentMoniker": "vaccalertDotnet\\Models\\Efmigrationshistory.cs",
+              "ToolTip": "D:\\Know-it\\Project\\DotNetWebAPI\\vaccalertDotnet\\Models\\Efmigrationshistory.cs",
+              "RelativeToolTip": "vaccalertDotnet\\Models\\Efmigrationshistory.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-08T17:55:15.699Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Booking.cs",
+              "DocumentMoniker": "D:\\Know-it\\Project\\DotNetWebAPI\\vaccalertDotnet\\Models\\Booking.cs",
+              "RelativeDocumentMoniker": "vaccalertDotnet\\Models\\Booking.cs",
+              "ToolTip": "D:\\Know-it\\Project\\DotNetWebAPI\\vaccalertDotnet\\Models\\Booking.cs",
+              "RelativeToolTip": "vaccalertDotnet\\Models\\Booking.cs",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAYwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-08T14:11:13.222Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "vaccalertDotnet.csproj",
+              "DocumentMoniker": "D:\\Know-it\\Project\\DotNetWebAPI\\vaccalertDotnet\\vaccalertDotnet.csproj",
+              "RelativeDocumentMoniker": "vaccalertDotnet\\vaccalertDotnet.csproj",
+              "ToolTip": "D:\\Know-it\\Project\\DotNetWebAPI\\vaccalertDotnet\\vaccalertDotnet.csproj",
+              "RelativeToolTip": "vaccalertDotnet\\vaccalertDotnet.csproj",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAAAsAAABBAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-08-03T14:09:20.774Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
